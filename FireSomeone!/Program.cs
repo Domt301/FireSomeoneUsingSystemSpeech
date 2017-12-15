@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Speech.Synthesis;
 
 namespace FireSomeone_
 {
@@ -10,6 +7,22 @@ namespace FireSomeone_
     {
         static void Main(string[] args)
         {
+            const string someone = "Serkan";
+
+            using (SpeechSynthesizer synth = new SpeechSynthesizer())
+            {
+                synth.SetOutputToDefaultAudioDevice();
+
+                for (int i = 0; i < 10; i++)
+                {
+                    Console.WriteLine(i.ToString());
+                    synth.Speak($"{someone} you are Fired!");
+                }
+            }
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
     }
 }
+
